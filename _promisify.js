@@ -49,8 +49,9 @@ if (typeof Promise === 'undefined' || (bloob && !falsey[bloob])) {
       for (var i = 0; i < len; ++i) {
         args[i] = arguments[i]
       }
+      var lastIndex = i
       return new Promise(function (resolve, reject) {
-        args[i] = makeCallback(resolve, reject)
+        args[lastIndex] = makeCallback(resolve, reject)
         fn.apply(null, args)
       })
     }
