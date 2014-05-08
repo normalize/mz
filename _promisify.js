@@ -6,7 +6,7 @@ var falsey = {
   nope: true
 }
 
-var bloob = process.env.MDZ_BLUEBIRD
+var bloob = process.env.MZ_BLUEBIRD
 if (typeof Promise === 'undefined' || (bloob && !falsey[bloob])) {
   // use bluebird
   var promisify
@@ -15,14 +15,14 @@ if (typeof Promise === 'undefined' || (bloob && !falsey[bloob])) {
   } catch (err) {
     throw new Error('please install bluebird!')
   }
-  module.exports = function mdz_promisify(name, fn) {
+  module.exports = function mz_promisify(name, fn) {
     return promisify(fn)
   }
 } else if (typeof Promise === 'function') {
   // var set = require('function-name')
   var slice = require('sliced')
 
-  module.exports = function mdz_promisify(name, fn) {
+  module.exports = function mz_promisify(name, fn) {
     // set(anonymous, name)
     return anonymous
 
