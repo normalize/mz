@@ -1,0 +1,27 @@
+{
+  "name": "mdz",
+  "description": "modernize node.js to be ecmascript compliant",
+  "version": "0.0.0",
+  "author": {
+    "name": "Jonathan Ong",
+    "email": "me@jongleberry.com",
+    "url": "http://jongleberry.com",
+    "twitter": "https://twitter.com/jongleberry"
+  },
+  "license": "MIT",
+  "repository": "normalize/mdz",
+  "dependencies": {
+    "sliced": "0"
+  },
+  "devDependencies": {
+    "function-name": "0",
+    "bluebird": "1",
+    "mocha": "1"
+  },
+  "scripts": {
+    "test": "mocha --harmony --reporter spec --bail; MDZ_BLUEBIRD=1 mocha --reporter spec --bail"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  }
+}
