@@ -69,9 +69,17 @@ export MZ_BLUEBIRD=1
 
 You may want to always use bluebird in production until v8 fixes and optimizes its `Promise` implementation.
 
+### Will this make my app faster?
+
+Nope
+
 ### Can I add more features?
 
 Sure.
 Open an issue.
+
+Currently, the plans are to eventually support:
+
+- ECMAScript7 Streams
 
 [bluebird]: https://github.com/petkaantonov/bluebird
