@@ -20,22 +20,38 @@ if (typeof Promise === 'undefined' || (bloob && !falsey[bloob])) {
   }
 } else if (typeof Promise === 'function') {
   // var set = require('function-name')
-  var slice = require('sliced')
+  var makeCallback = function(resolve, reject) {
+    return function(err, value) {
+      if (err) {
+        reject(err)
+      } else {
+        var len = arguments.length
+        if (len > 2) {
+          var values = new Array(len - 1)
+          for (var i = 1; i < len; ++i) {
+            values[i - 1] = arguments[i]
+          }
+          resolve(values)
+        } else {
+          resolve(value)
+        }
+      }
+    }
+  }
 
   module.exports = function mz_promisify(name, fn) {
     // set(anonymous, name)
     return anonymous
 
     function anonymous() {
-      var args = slice(arguments)
+      var len = arguments.length
+      var args = new Array(len + 1)
+      for (var i = 0; i < len; ++i) {
+        args[i] = arguments[i]
+      }
       return new Promise(function (resolve, reject) {
-        fn.apply(null, args.concat(function (err, res) {
-          if (err) {
-            reject(err)
-          } else {
-            resolve(res)
-          }
-        }))
+        args[i] = makeCallback(resolve, reject)
+        fn.apply(null, args)
       })
     }
   }
