@@ -1,5 +1,5 @@
 
-# MDZ - Modernize node.js
+# MZ - Modernize node.js
 
 Modernize node.js to current ECMAScript specifications!
 node.js will not update their API to ES6+ [for a while](https://github.com/joyent/node/issues/7549).
@@ -7,16 +7,16 @@ This library is a wrapper for various aspects of node.js' API.
 
 ## Installation and Usage
 
-Set `mdz` as a dependency and install it.
+Set `mz` as a dependency and install it.
 
 ```bash
-npm i mdz
+npm i mz
 ```
 
-Then prefix the relevant `require()`s with `mdz/`:
+Then prefix the relevant `require()`s with `mz/`:
 
 ```js
-var fs = require('mdz/fs')
+var fs = require('mz/fs')
 
 fs.exists(__filename).then(function (exists) {
   if (exists) // do something
@@ -27,7 +27,7 @@ Personally, I use this with generator-based control flow libraries such as [co](
 
 ```js
 var co = require('co')
-var fs = require('mdz/fs')
+var fs = require('mz/fs')
 
 co(function* () {
   if (yield fs.exists(__filename)) // do something
@@ -47,7 +47,7 @@ The modules wrapped are:
 - `zlib`
 
 ```js
-var exec = require('mdz/child_process').exec
+var exec = require('mz/child_process').exec
 
 exec('node --version').then(function (stdout) {
   console.log(stdout)
@@ -57,10 +57,10 @@ exec('node --version').then(function (stdout) {
 If you're using node v0.11.13+,
 the native v8 `Promise` is used.
 Otherwise, __you must install [bluebird][bluebird] yourself__.
-If you want to force this library to use [bluebird][bluebird], set the `MDZ_BLUEBIRD` environmental variable:
+If you want to force this library to use [bluebird][bluebird], set the `MZ_BLUEBIRD` environmental variable:
 
 ```bash
-export MDZ_BLUEBIRD=1
+export MZ_BLUEBIRD=1
 ```
 
 ## FAQ

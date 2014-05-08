@@ -1,5 +1,5 @@
 {
-  "name": "mdz",
+  "name": "mz",
   "description": "modernize node.js to current ECMAScript standards",
   "version": "0.1.0",
   "author": {
@@ -9,7 +9,7 @@
     "twitter": "https://twitter.com/jongleberry"
   },
   "license": "MIT",
-  "repository": "normalize/mdz",
+  "repository": "normalize/mz",
   "dependencies": {
     "sliced": "0"
   },
@@ -19,7 +19,7 @@
     "mocha": "1"
   },
   "scripts": {
-    "test": "mocha --harmony --reporter spec --bail; MDZ_BLUEBIRD=1 mocha --reporter spec --bail"
+    "test": "mocha --harmony --reporter spec --bail; MZ_BLUEBIRD=1 mocha --reporter spec --bail"
   },
   "engines": {
     "node": ">= 0.10"
