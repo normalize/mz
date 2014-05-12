@@ -52,4 +52,11 @@ describe('Promisify', function () {
       done()
     })
   })
+
+  if (!promisify.bluebird) {
+    it('should name functions', function () {
+      var prom = promisify('lol', function () {})
+      assert.equal(prom.name, 'lol')
+    })
+  }
 })

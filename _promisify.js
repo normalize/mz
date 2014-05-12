@@ -18,8 +18,9 @@ if (typeof Promise === 'undefined' || (bloob && !falsey[bloob])) {
   module.exports = function mz_promisify(name, fn) {
     return promisify(fn)
   }
+  module.exports.bluebird = true
 } else if (typeof Promise === 'function') {
-  // var set = require('function-name')
+  var set = require('function-name')
   var makeCallback = function(resolve, reject) {
     return function(err, value) {
       if (err) {
@@ -40,7 +41,7 @@ if (typeof Promise === 'undefined' || (bloob && !falsey[bloob])) {
   }
 
   module.exports = function mz_promisify(name, fn) {
-    // set(anonymous, name)
+    set(anonymous, name)
     return anonymous
 
     function anonymous() {
@@ -56,4 +57,5 @@ if (typeof Promise === 'undefined' || (bloob && !falsey[bloob])) {
       })
     }
   }
+  module.exports.bluebird = false
 }
