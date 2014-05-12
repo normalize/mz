@@ -1,9 +1,7 @@
 
 var fs = require('fs')
 
-var promisify = require('./_promisify.js')
-
-var methods = [
+require('./_promisify_all.js')(fs, exports, [
   'rename',
   'ftruncate',
   'chown',
@@ -32,21 +30,13 @@ var methods = [
   'readFile',
   'writeFile',
   'appendFile',
-]
+])
 
-methods.forEach(function (name) {
-  if (typeof fs[name] === 'function')
-    exports[name] = promisify(name, fs[name])
-})
+var promisify = require('./_promisify.js')
 
 // don't know enough about promises to do this haha
 exports.exists = promisify('exists', function exists(filename, done) {
   fs.stat(filename, function (err) {
     done(null, !err)
   })
-})
-
-// proxy the rest
-Object.keys(fs).forEach(function (name) {
-  if (!exports[name]) exports[name] = fs[name]
 })
