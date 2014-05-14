@@ -18,7 +18,7 @@ module.exports = function (source, exports, methods) {
 
 function deprecated(source, name) {
   var desc = Object.getOwnPropertyDescriptor(source, name)
-  if (!desc.get) return false
+  if (!desc || !desc.get) return false
   if (desc.get.name === 'deprecated') return true
   return false
 }
