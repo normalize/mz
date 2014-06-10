@@ -10,9 +10,6 @@
   },
   "license": "MIT",
   "repository": "normalize/mz",
-  "optionalDependencies": {
-    "function-name": "0"
-  },
   "devDependencies": {
     "bluebird": "1",
     "mocha": "1"

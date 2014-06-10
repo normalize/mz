@@ -20,7 +20,6 @@ if (typeof Promise === 'undefined' || (bloob && !falsey[bloob])) {
   }
   module.exports.bluebird = true
 } else if (typeof Promise === 'function') {
-  var set = require('function-name')
   var makeCallback = function(resolve, reject) {
     return function(err, value) {
       if (err) {
@@ -41,21 +40,16 @@ if (typeof Promise === 'undefined' || (bloob && !falsey[bloob])) {
   }
 
   module.exports = function mz_promisify(name, fn) {
-    set(anonymous, name)
-    return anonymous
-
-    function anonymous() {
-      var len = arguments.length
-      var args = new Array(len + 1)
-      for (var i = 0; i < len; ++i) {
-        args[i] = arguments[i]
-      }
-      var lastIndex = i
-      return new Promise(function (resolve, reject) {
-        args[lastIndex] = makeCallback(resolve, reject)
-        fn.apply(null, args)
-      })
-    }
+    return eval('(function ' + name + '() {\n'
+      + 'var len = arguments.length\n'
+      + 'var args = new Array(len + 1)\n'
+      + 'for (var i = 0; i < len; ++i) args[i] = arguments[i]\n'
+      + 'var lastIndex = i\n'
+      + 'return new Promise(function (resolve, reject) {\n'
+        + 'args[lastIndex] = makeCallback(resolve, reject)\n'
+        + 'fn.apply(null, args)\n'
+      + '})\n'
+    + '})')
   }
   module.exports.bluebird = false
 }
