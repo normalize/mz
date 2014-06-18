@@ -16,8 +16,5 @@
   },
   "scripts": {
     "test": "mocha --harmony --reporter spec --bail; MZ_BLUEBIRD=1 mocha --reporter spec --bail"
-  },
-  "engines": {
-    "node": ">= 0.10"
   }
 }

@@ -3,6 +3,10 @@ var assert = require('assert')
 
 var promisify = require('../_promisify')
 
+var setImmediate = global.setImmediate || function (fn) {
+  process.nextTick(fn)
+}
+
 describe('Promisify', function () {
   it('should reject errors', function (done) {
     function fn(done) {

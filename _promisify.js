@@ -1,42 +1,21 @@
 
-var falsey = {
-  0: true,
-  false: true,
-  no: true,
-  nope: true
-}
+var promisify
+try {
+  promisify = require('bluebird').promisify
+} catch (_) {}
 
-var bloob = process.env.MZ_BLUEBIRD
-if (typeof Promise === 'undefined' || (bloob && !falsey[bloob])) {
-  // use bluebird
-  var promisify
-  try {
-    promisify = require('bluebird').promisify
-  } catch (err) {
-    throw new Error('please install bluebird!')
-  }
+if (promisify) {
   module.exports = function mz_promisify(name, fn) {
     return promisify(fn)
   }
-  module.exports.bluebird = true
-} else if (typeof Promise === 'function') {
-  var makeCallback = function(resolve, reject) {
-    return function(err, value) {
-      if (err) {
-        reject(err)
-      } else {
-        var len = arguments.length
-        if (len > 2) {
-          var values = new Array(len - 1)
-          for (var i = 1; i < len; ++i) {
-            values[i - 1] = arguments[i]
-          }
-          resolve(values)
-        } else {
-          resolve(value)
-        }
-      }
-    }
+} else {
+  if (typeof Promise !== 'function') {
+    console.error()
+    console.error('mz: a `Promise` implementation could not be found.')
+    console.error('mz: please use a version of node that has native Promises')
+    console.error('mz: or `npm i bluebird`')
+    console.error()
+    process.exit(1)
   }
 
   module.exports = function mz_promisify(name, fn) {
@@ -51,5 +30,25 @@ if (typeof Promise === 'undefined' || (bloob && !falsey[bloob])) {
       + '})\n'
     + '})')
   }
-  module.exports.bluebird = false
+}
+
+module.exports.bluebird = !!promisify
+
+function makeCallback(resolve, reject) {
+  return function(err, value) {
+    if (err) {
+      reject(err)
+    } else {
+      var len = arguments.length
+      if (len > 2) {
+        var values = new Array(len - 1)
+        for (var i = 1; i < len; ++i) {
+          values[i - 1] = arguments[i]
+        }
+        resolve(values)
+      } else {
+        resolve(value)
+      }
+    }
+  }
 }
