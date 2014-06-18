@@ -54,24 +54,28 @@ exec('node --version').then(function (stdout) {
 })
 ```
 
-If you're using node v0.11.13+,
-the native v8 `Promise` is used.
-Otherwise, __you must install [bluebird][bluebird] yourself__.
-If you want to force this library to use [bluebird][bluebird], set the `MZ_BLUEBIRD` environmental variable:
+## Promise Engine
 
-```bash
-export MZ_BLUEBIRD=1
-```
+If you've installed [bluebird][bluebird],
+[bluebird][bluebird] will be used.
+`mz` does not install [bluebird][bluebird] for you.
+
+Otherwise, if you're using a node that has native v8 Promises (v0.11.13+),
+then that will be used.
+
+Otherwise, this library will crash the process and exit,
+so you might as well install [bluebird][bluebird] as a dependency!
 
 ## FAQ
 
 ### Can I use this in production?
 
-You may want to always use bluebird in production until v8 fixes and optimizes its `Promise` implementation.
+If you do, you should probably install [bluebird][bluebird] as
+native v8 promises are still pretty raw.
 
 ### Will this make my app faster?
 
-Nope
+Nope, probably slower actually.
 
 ### Can I add more features?
 
