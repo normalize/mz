@@ -10,6 +10,9 @@
   },
   "license": "MIT",
   "repository": "normalize/mz",
+  "dependencies": {
+    "native-or-bluebird": "1"
+  },
   "devDependencies": {
     "istanbul": "0",
     "bluebird": "2",

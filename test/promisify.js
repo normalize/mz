@@ -11,7 +11,9 @@ describe('Promisify', function () {
   it('should reject errors', function (done) {
     function fn(done) {
       setImmediate(function () {
-        done(new Error('boom'))
+        var err = new Error('boom')
+        err.boom = 'boom'
+        done(err)
       })
     }
 
@@ -19,6 +21,7 @@ describe('Promisify', function () {
 
     prom().catch(function (err) {
       assert.equal(err.message, 'boom')
+      assert.equal(err.boom, 'boom')
       done()
     })
   })
