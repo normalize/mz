@@ -1,6 +1,14 @@
 
 # MZ - Modernize node.js
 
+[![NPM version][npm-image]][npm-url]
+[![Build status][travis-image]][travis-url]
+[![Test coverage][coveralls-image]][coveralls-url]
+[![Dependency Status][david-image]][david-url]
+[![License][license-image]][license-url]
+[![Downloads][downloads-image]][downloads-url]
+[![Gittip][gittip-image]][gittip-url]
+
 Modernize node.js to current ECMAScript specifications!
 node.js will not update their API to ES6+ [for a while](https://github.com/joyent/node/issues/7549).
 This library is a wrapper for various aspects of node.js' API.
@@ -87,3 +95,20 @@ Currently, the plans are to eventually support:
 - ECMAScript7 Streams
 
 [bluebird]: https://github.com/petkaantonov/bluebird
+
+[npm-image]: https://img.shields.io/npm/v/mz.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/mz
+[github-tag]: http://img.shields.io/github/tag/normalize/mz.svg?style=flat-square
+[github-url]: https://github.com/normalize/mz/tags
+[travis-image]: https://img.shields.io/travis/normalize/mz.svg?style=flat-square
+[travis-url]: https://travis-ci.org/normalize/mz
+[coveralls-image]: https://img.shields.io/coveralls/normalize/mz.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/normalize/mz?branch=master
+[david-image]: http://img.shields.io/david/normalize/mz.svg?style=flat-square
+[david-url]: https://david-dm.org/normalize/mz
+[license-image]: http://img.shields.io/npm/l/mz.svg?style=flat-square
+[license-url]: LICENSE.md
+[downloads-image]: http://img.shields.io/npm/dm/mz.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/mz
+[gittip-image]: https://img.shields.io/gittip/jonathanong.svg?style=flat-square
+[gittip-url]: https://www.gittip.com/jonathanong/
