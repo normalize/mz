@@ -1,7 +1,7 @@
 {
   "name": "mz",
   "description": "modernize node.js to current ECMAScript standards",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "Jonathan Ong",
     "email": "me@jongleberry.com",
