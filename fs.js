@@ -1,5 +1,10 @@
 
-var fs = require('fs')
+var fs;
+try {
+  fs = require('graceful-fs');
+} catch(err) {
+  fs = require('fs');
+}
 
 require('./_promisify_all.js')(fs, exports, [
   'rename',
