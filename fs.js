@@ -6,7 +6,7 @@ try {
   fs = require('fs');
 }
 
-require('./_promisify_all.js')(fs, exports, [
+require('thenify-all')(fs, exports, [
   'rename',
   'ftruncate',
   'chown',
@@ -37,7 +37,7 @@ require('./_promisify_all.js')(fs, exports, [
   'appendFile',
 ])
 
-var promisify = require('./_promisify.js')
+var promisify = require('thenify')
 
 // don't know enough about promises to do this haha
 exports.exists = promisify('exists', function exists(filename, done) {

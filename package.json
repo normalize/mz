@@ -11,7 +11,9 @@
   "license": "MIT",
   "repository": "normalize/mz",
   "dependencies": {
-    "native-or-bluebird": "1"
+    "native-or-bluebird": "1",
+    "thenify": "2",
+    "thenify-all": "1"
   },
   "devDependencies": {
     "istanbul": "0",
@@ -22,5 +24,19 @@
     "test": "mocha --reporter spec",
     "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot",
     "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter dot"
-  }
+  },
+  "keywords": [
+    "promisify",
+    "promise",
+    "thenify",
+    "then",
+    "es6"
+  ],
+  "files": [
+    "child_process.js",
+    "crypto.js",
+    "dns.js",
+    "fs.js",
+    "zlib.js"
+  ]
 }

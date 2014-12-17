@@ -1,5 +1,5 @@
 
-require('./_promisify_all')(
+require('thenify-all')(
   require('zlib'),
   exports, [
     'deflate',
