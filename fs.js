@@ -40,7 +40,7 @@ require('thenify-all')(fs, exports, [
 var promisify = require('thenify')
 
 // don't know enough about promises to do this haha
-exports.exists = promisify('exists', function exists(filename, done) {
+exports.exists = promisify(function exists(filename, done) {
   fs.stat(filename, function (err) {
     done(null, !err)
   })
