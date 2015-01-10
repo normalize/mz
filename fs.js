@@ -1,4 +1,5 @@
 
+var thenifyAll = require('thenify-all')
 var fs;
 try {
   fs = require('graceful-fs');
@@ -6,7 +7,7 @@ try {
   fs = require('fs');
 }
 
-require('thenify-all')(fs, exports, [
+thenifyAll(fs, exports, [
   'rename',
   'ftruncate',
   'chown',
@@ -37,10 +38,8 @@ require('thenify-all')(fs, exports, [
   'appendFile',
 ])
 
-var promisify = require('thenify')
-
 // don't know enough about promises to do this haha
-exports.exists = promisify(function exists(filename, done) {
+exports.exists = thenifyAll.thenify(function exists(filename, done) {
   fs.stat(filename, function (err) {
     done(null, !err)
   })
