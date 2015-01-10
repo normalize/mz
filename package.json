@@ -12,8 +12,7 @@
   "repository": "normalize/mz",
   "dependencies": {
     "native-or-bluebird": "1",
-    "thenify": "3",
-    "thenify-all": "1"
+    "thenify-all": ">= 1.6.0 < 2"
   },
   "devDependencies": {
     "istanbul": "0",
