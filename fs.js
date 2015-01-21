@@ -6,7 +6,7 @@ try {
   fs = require('fs');
 }
 
-require('thenify-all')(fs, exports, [
+var api = [
   'rename',
   'ftruncate',
   'chown',
@@ -35,7 +35,12 @@ require('thenify-all')(fs, exports, [
   'readFile',
   'writeFile',
   'appendFile',
-])
+]
+
+var access = fs.access
+typeof access === 'function' && api.push('access')
+
+require('thenify-all')(fs, exports, api)
 
 var promisify = require('thenify')
 
