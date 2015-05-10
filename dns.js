@@ -1,5 +1,5 @@
 
-require('thenify-all')(
+require('thenify-all').withCallback(
   require('dns'),
   exports, [
     'lookup',
