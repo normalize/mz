@@ -7,7 +7,6 @@
 [![Dependency Status][david-image]][david-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
-[![Gittip][gittip-image]][gittip-url]
 
 Modernize node.js to current ECMAScript specifications!
 node.js will not update their API to ES6+ [for a while](https://github.com/joyent/node/issues/7549).
@@ -110,5 +109,3 @@ Currently, the plans are to eventually support:
 [license-url]: LICENSE.md
 [downloads-image]: http://img.shields.io/npm/dm/mz.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/mz
-[gittip-image]: https://img.shields.io/gittip/jonathanong.svg?style=flat-square
-[gittip-url]: https://www.gittip.com/jonathanong/
