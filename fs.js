@@ -40,10 +40,16 @@ var api = [
 
 typeof fs.access === 'function' && api.push('access')
 
-require('thenify-all')(fs, exports, api)
+require('thenify-all').withCallback(fs, exports, api)
 
-// don't know enough about promises to do this haha
-exports.exists = function (filename) {
+exports.exists = function (filename, callback) {
+  // callback
+  if (typeof callback === 'function') {
+    return fs.stat(filename, function (err) {
+      callback(null, !err);
+    })
+  }
+  // or promise
   return new Promise(function (resolve) {
     fs.stat(filename, function (err) {
       resolve(!err)
