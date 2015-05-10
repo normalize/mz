@@ -1,9 +1,10 @@
 
-var fs;
+var Promise = require('native-or-bluebird')
+var fs
 try {
-  fs = require('graceful-fs');
+  fs = require('graceful-fs')
 } catch(err) {
-  fs = require('fs');
+  fs = require('fs')
 }
 
 var api = [
@@ -37,16 +38,15 @@ var api = [
   'appendFile',
 ]
 
-var access = fs.access
-typeof access === 'function' && api.push('access')
+typeof fs.access === 'function' && api.push('access')
 
 require('thenify-all')(fs, exports, api)
 
-var promisify = require('thenify')
-
 // don't know enough about promises to do this haha
-exports.exists = promisify(function exists(filename, done) {
-  fs.stat(filename, function (err) {
-    done(null, !err)
+exports.exists = function (filename) {
+  return new Promise(function (resolve) {
+    fs.stat(filename, function (err) {
+      resolve(!err)
+    })
   })
-})
+}
