@@ -12,6 +12,7 @@
   "repository": "normalize/mz",
   "dependencies": {
     "native-or-bluebird": "1",
+    "object-assign": "^4.0.1",
     "thenify-all": "1"
   },
   "devDependencies": {
@@ -36,6 +37,7 @@
     "crypto.js",
     "dns.js",
     "fs.js",
+    "readline.js",
     "zlib.js"
   ]
 }
