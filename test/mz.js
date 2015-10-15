@@ -101,6 +101,107 @@ describe('crypto', function () {
   })
 })
 
+describe('readline', function () {
+  var stream = require('stream')
+  var readline = require('../readline')
+  var Promise = require('native-or-bluebird')
+
+  it('.question().then()', function (done) {
+    var input = stream.PassThrough()
+    var output = stream.PassThrough()
+    var rl = readline.createInterface({ input: input, output: output })
+
+    rl.question('a').then(function (answer) {
+      assert.equal(answer, 'b')
+      done()
+    })
+
+    assert.equal(output.read(), 'a')
+    input.write('b\n')
+  })
+
+  it('completer support', function (done) {
+    function completer (line) {
+      assert.equal(line, 'b')
+      return Promise.resolve([['bTESTSTRING'], line])
+    }
+
+    var input = stream.PassThrough()
+    var output = stream.PassThrough()
+    var bufferedOutput = ''
+    var rl = readline.createInterface({ input: input, output: output, completer: completer, terminal: true })
+
+    rl.question('a').then(function (answer) {
+      assert.equal(answer, 'bTESTSTRING')
+      done()
+    })
+
+    function onOutputData (data) {
+      bufferedOutput += data.toString()
+
+      if (bufferedOutput.match(/TESTSTRING/)) {
+        input.write('\n')
+        output.removeListener('data', onOutputData)
+      }
+    }
+
+    output.on('data', onOutputData)
+    input.write('b\t')
+  })
+
+  describe('callback support', function () {
+    it('.question()', function (done) {
+      var input = stream.PassThrough()
+      var output = stream.PassThrough()
+      var rl = readline.createInterface({ input: input, output: output })
+
+      rl.question('a', function (answer) {
+        assert.equal(answer, 'b')
+        done()
+      })
+
+      assert.equal(output.read(), 'a')
+      input.write('b\n')
+    })
+
+    it('completer support sync', function (done) {
+      function completer (line) {
+        assert.equal(line, 'b')
+        return [['bTESTSTRING'], line]
+      }
+
+      var input = stream.PassThrough()
+      var output = stream.PassThrough()
+      var rl = readline.createInterface({ input: input, output: output, completer: completer, terminal: true })
+
+      rl.question('a').then(function (answer) {
+        assert.ok(output.read().toString().match(/TESTSTRING/))
+        done()
+      })
+
+      input.write('b\t\n')
+    })
+
+    it('completer support async', function (done) {
+      function completer (line, cb) {
+        assert.equal(line, 'b')
+        cb(null, [['bTESTSTRING'], line])
+      }
+
+      var input = stream.PassThrough()
+      var output = stream.PassThrough()
+      var rl = readline.createInterface({ input: input, output: output, completer: completer, terminal: true })
+
+      rl.question('a').then(function (answer) {
+        assert.ok(output.read().toString().match(/TESTSTRING/))
+        done()
+      })
+
+      input.write('b\t\n')
+    })
+  })
+})
+
 describe('zlib', function () {
   var zlib = require('../zlib')
 

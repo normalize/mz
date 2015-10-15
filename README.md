@@ -51,6 +51,7 @@ The modules wrapped are:
 - `crypto`
 - `dns`
 - `fs`
+- `readline`
 - `zlib`
 
 ```js
