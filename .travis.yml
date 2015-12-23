@@ -3,6 +3,9 @@ node_js:
 - "0.12"
 - "iojs-v1"
 - "iojs-v2"
+- "iojs-v3"
+- "4"
+- "5"
 sudo: false
 language: node_js
 script: "npm run test-travis"
