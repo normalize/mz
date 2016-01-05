@@ -78,8 +78,8 @@ so you might as well install [bluebird][bluebird] as a dependency!
 
 ### Can I use this in production?
 
-If you do, you should probably install [bluebird][bluebird] as
-native v8 promises are still pretty raw.
+Yes, Node 4.x ships with stable promises support. For older engines,
+you should probably install [bluebird][bluebird].
 
 ### Will this make my app faster?
 
