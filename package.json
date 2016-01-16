@@ -33,6 +33,7 @@
     "es6"
   ],
   "files": [
+    "index.js",
     "child_process.js",
     "crypto.js",
     "dns.js",
