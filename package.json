@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "istanbul": "0",
-    "bluebird": "2",
+    "bluebird": "3.1.2",
     "mocha": "2"
   },
   "scripts": {
