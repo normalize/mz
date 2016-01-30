@@ -1,4 +1,9 @@
 
+2.3.0 / 2016-01-30
+==================
+
+  * feat(package): switch to `any-promise` to support more promise engines
+
 2.2.0 / 2016-01-24
 ==================
 
