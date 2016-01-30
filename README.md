@@ -30,15 +30,15 @@ fs.exists(__filename).then(function (exists) {
 })
 ```
 
-Personally, I use this with generator-based control flow libraries such as [co](https://github.com/visionmedia/co) so I don't need to use implementation-specific wrappers like [co-fs](https://github.com/visionmedia/co-fs).
+With ES2017, this will allow you to use async functions cleanly with node's core API:
 
 ```js
-var co = require('co')
-var fs = require('mz/fs')
+const fs = require('mz/fs')
 
-co(function* () {
-  if (yield fs.exists(__filename)) // do something
-})()
+
+async function doSomething () {
+  if (await fs.exists(__filename)) // do something
+}
 ```
 
 ## Promisification
@@ -64,22 +64,15 @@ exec('node --version').then(function (stdout) {
 
 ## Promise Engine
 
-If you've installed [bluebird][bluebird],
-[bluebird][bluebird] will be used.
-`mz` does not install [bluebird][bluebird] for you.
-
-Otherwise, if you're using a node that has native v8 Promises (v0.11.13+),
-then that will be used.
-
-Otherwise, this library will crash the process and exit,
-so you might as well install [bluebird][bluebird] as a dependency!
+`mz` uses [`any-promise`](https://github.com/kevinbeaty/any-promise).
 
 ## FAQ
 
 ### Can I use this in production?
 
 Yes, Node 4.x ships with stable promises support. For older engines,
-you should probably install [bluebird][bluebird].
+you should probably install your own promise implementation and register it with
+`require('any-promise/register')('bluebird')`.
 
 ### Will this make my app faster?
 
@@ -92,6 +85,7 @@ Open an issue.
 
 Currently, the plans are to eventually support:
 
+- New APIs in node.js that are not available in older versions of node
 - ECMAScript7 Streams
 
 [bluebird]: https://github.com/petkaantonov/bluebird
