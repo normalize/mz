@@ -1,5 +1,5 @@
 var readline = require('readline')
-var Promise = require('native-or-bluebird')
+var Promise = require('any-promise')
 var objectAssign = require('object-assign')
 var Interface = readline.Interface
 

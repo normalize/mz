@@ -104,7 +104,7 @@ describe('crypto', function () {
 describe('readline', function () {
   var stream = require('stream')
   var readline = require('../readline')
-  var Promise = require('native-or-bluebird')
+  var Promise = require('any-promise')
 
   it('.question().then()', function (done) {
     var input = stream.PassThrough()

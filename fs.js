@@ -1,5 +1,5 @@
 
-var Promise = require('native-or-bluebird')
+var Promise = require('any-promise')
 var fs
 try {
   fs = require('graceful-fs')
