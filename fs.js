@@ -36,6 +36,7 @@ var api = [
   'readFile',
   'writeFile',
   'appendFile',
+  'truncate',
 ]
 
 typeof fs.access === 'function' && api.push('access')
