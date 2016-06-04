@@ -179,7 +179,8 @@ describe('readline', function () {
         done()
       })
 
-      input.write('b\t\n')
+      input.write('b\t')
+      input.write('\n')
     })
 
     it('completer support async', function (done) {
@@ -197,7 +198,8 @@ describe('readline', function () {
         done()
       })
 
-      input.write('b\t\n')
+      input.write('b\t')
+      input.write('\n')
     })
   })
 })
