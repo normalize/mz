@@ -4,8 +4,8 @@ require('thenify-all').withCallback(
   exports, [
     'deflate',
     'deflateRaw',
-    'gzip',
     'gunzip',
+    'gzip',
     'inflate',
     'inflateRaw',
     'unzip',
