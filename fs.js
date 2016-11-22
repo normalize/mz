@@ -31,6 +31,7 @@ var api = [
   'utimes',
   'futimes',
   'fsync',
+  'fdatasync',
   'write',
   'read',
   'readFile',
