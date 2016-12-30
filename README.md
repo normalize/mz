@@ -101,6 +101,6 @@ Currently, the plans are to eventually support:
 [david-image]: http://img.shields.io/david/normalize/mz.svg?style=flat-square
 [david-url]: https://david-dm.org/normalize/mz
 [license-image]: http://img.shields.io/npm/l/mz.svg?style=flat-square
-[license-url]: LICENSE.md
+[license-url]: LICENSE
 [downloads-image]: http://img.shields.io/npm/dm/mz.svg?style=flat-square
 [downloads-url]: https://npmjs.org/package/mz
