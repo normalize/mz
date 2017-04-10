@@ -8,6 +8,7 @@ try {
 }
 
 var api = [
+  'access',
   'appendFile',
   'chmod',
   'chown',
@@ -40,7 +41,6 @@ var api = [
   'writeFile'
 ]
 
-typeof fs.access === 'function' && api.push('access')
 typeof fs.mkdtemp === 'function' && api.push('mkdtemp')
 
 require('thenify-all').withCallback(fs, exports, api)
@@ -48,13 +48,13 @@ require('thenify-all').withCallback(fs, exports, api)
 exports.exists = function (filename, callback) {
   // callback
   if (typeof callback === 'function') {
-    return fs.stat(filename, function (err) {
+    return fs.access(filename, function (err) {
       callback(null, !err);
     })
   }
   // or promise
   return new Promise(function (resolve) {
-    fs.stat(filename, function (err) {
+    fs.access(filename, function (err) {
       resolve(!err)
     })
   })
