@@ -41,6 +41,7 @@ var api = [
 ]
 
 typeof fs.access === 'function' && api.push('access')
+typeof fs.copyFile === 'function' && api.push('copyFile')
 typeof fs.mkdtemp === 'function' && api.push('mkdtemp')
 
 require('thenify-all').withCallback(fs, exports, api)
