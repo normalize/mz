@@ -50,7 +50,7 @@ The modules wrapped are:
 - `child_process`
 - `crypto`
 - `dns`
-- `fs`
+- `fs` (uses `graceful-fs` if available)
 - `readline`
 - `zlib`
 
