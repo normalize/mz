@@ -35,10 +35,9 @@ With ES2017, this will allow you to use async functions cleanly with node's core
 ```js
 const fs = require('mz/fs')
 
-
-async function doSomething () {
+(async function () {
   if (await fs.exists(__filename)) // do something
-}
+})()
 ```
 
 ## Promisification
